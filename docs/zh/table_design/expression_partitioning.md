@@ -220,7 +220,7 @@ PROPERTIES(
 
 导入数据时，StarRocks 会根据数据和分区表达式定义的分区规则，自动创建分区。
 
-值得注意的是，如果您建表时使用表达式分区，并且需要使用 [INSERT OVERWRITE](../loading/InsertInto.md#通过-insert-overwrite-select-语句覆盖写入数据) 覆盖写入**指定分区**的数据，不论该分区是否已经创建，目前您都需要在 `PARTITION()` 提供明确的分区范围。而不是同 Range 分区或 List 分区一样，只需要在`PARTITION (partition_name)` 中提供分区名称。
+值得注意的是，如果您建表时使用表达式分区或者list分区，并且需要使用 [INSERT OVERWRITE](../loading/InsertInto.md#通过-insert-overwrite-select-语句覆盖写入数据) 覆盖写入**指定分区**的数据，不论该分区是否已经创建，目前您都需要在 `PARTITION()` 提供明确的分区范围。而不是同 Range 分区，只需要在`PARTITION (partition_name)` 中提供分区名称。
 
 如果建表时您使用时间函数表达式分区，则此时覆盖写入指定分区，您需要提供该分区的起始范围（分区粒度与建表时配置分区粒度一致）。如果该分区不存在，则导入数据时会自动创建该分区。
 
